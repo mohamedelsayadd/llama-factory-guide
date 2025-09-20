@@ -1,0 +1,28 @@
+1- load dataset 
+2 - loas the pretrained model 
+3 - save the dataset as json with format:
+[
+  {
+    "instruction": "user instruction (required)",
+    "input": "user input (optional)",
+    "output": "model response (required)",
+    "system": "system prompt (optional)",
+    "history": [
+      ["user instruction in the first round (optional)", "model response in the first round (optional)"],
+      ["user instruction in the second round (optional)", "model response in the second round (optional)"]
+    ]
+  }
+]
+4 - open LLaMA-Factory/data/dataset_info.json, add your data with format:
+"dataset_name": {
+  "file_name": "data.json",
+  "columns": {
+    "prompt": "instruction",
+    "query": "input",
+    "response": "output",
+    "system": "system",
+    "history": "history"
+  }
+}
+5 write the configuration file in LLaMA-Factory/examples/train_lora/ with .yaml extension
+6 - train the model : !cd /content/LLaMA-Factory && llamafactory-cli train path 
